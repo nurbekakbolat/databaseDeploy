@@ -6,27 +6,16 @@ app.use(
     origin: "https://sparkling-caramel-33e27b.netlify.app",
   })
 );
-if (process.env.JAWSDB_URL) {
-  connection = mysql.createConnection(process.env.JAWSDB_URL);
-} else {
-  connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "diseases",
-  });
-}
-
 const app = express();
 
 app.use(express.json());
 
-// const db = mysql.createConnection({
-//   host: "eu-cdbr-west-03.cleardb.net",
-//   user: "kmbj564o6rusfaa1",
-//   password: "e694b1be",
-//   database: "heroku_3672b2fc917a5a6",
-// });
+const db = mysql.createConnection({
+  host: "eu-cdbr-west-03.cleardb.net",
+  user: "b3bb4e515071d0",
+  password: "d87c07aa",
+  database: "heroku_6fa3f2eaac603de",
+});
 app.set("port", process.env.PORT || 8800);
 
 app.get("/diseases" || "/", (req, res) => {

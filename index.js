@@ -32,6 +32,16 @@ app.get("/records", (req, res) => {
   });
 });
 
+app.get("/doctors", (req, res) => {
+  const q = "select * from doctor natural join users";
+  db.query(q, (err, data) => {
+    if (err) {
+      return res.json(err);
+    }
+    return res.json(data);
+  });
+});
+
 app.post("/diseases", (req, res) => {
   const q =
     "insert into disease (`disease_code`, `pathogen`, `descr`, `id`) values(?)";
@@ -75,6 +85,35 @@ app.put("/records/:id", (req, res) => {
   ];
   console.log(values);
   db.query(q, [...values, recordId], (err, data) => {
+    if (err) return res.json(err);
+    return res.json(data);
+  });
+});
+
+app.put("/doctorupd/:id", (req, res) => {
+  const recordId = req.params.id;
+  const q =
+    "update users set `email` = ?, `name` =?, `surname`=?, `salary` = ? , `phone`= ?, `cname`= ? where id= ?";
+  const values = [
+    req.body.email,
+    req.body.name,
+    req.body.surname,
+    req.body.salary,
+    req.body.phone,
+    req.body.cname,
+  ];
+  console.log(values);
+  db.query(q, [...values, recordId], (err, data) => {
+    if (err) return res.json(err);
+    return res.json(data);
+  });
+});
+
+app.delete("/doctors/:id", (req, res) => {
+  const docId = req.params.id;
+  const q = "delete from doctor where id= ?";
+  db.query(q, [docId], (err, data) => {
+    console.log(err);
     if (err) return res.json(err);
     return res.json(data);
   });

@@ -44,6 +44,7 @@ app.get("/doctors", (req, res) => {
 
 app.get("/records/:rid", (req, res) => {
   const q = "select * from records where id = rid";
+  console.log(rid);
   db.query(q, (err, data) => {
     if (err) {
       return res.json(err);

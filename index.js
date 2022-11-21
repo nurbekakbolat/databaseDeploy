@@ -50,9 +50,9 @@ app.post("/diseases", (req, res) => {
     return res.json(data);
   });
 });
-
-app.listen(process.env.PORT || 8800, () => {
-  console.log(`Connected to ${PORT}`);
+const port = process.env.PORT || 8800;
+app.listen(port, () => {
+  console.log(`Connected to ${port}`);
 });
 
 app.delete("/records/:id", (req, res) => {

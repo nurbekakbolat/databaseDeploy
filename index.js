@@ -10,7 +10,7 @@ const db = mysql.createConnection({
   password: "root",
   database: "diseases",
 });
-
+app.set("port", process.env.PORT || 8800);
 app.get("/", (req, res) => {
   res.json("backend is here");
 });
@@ -51,7 +51,7 @@ app.post("/diseases", (req, res) => {
   });
 });
 
-app.listen(process.env.PORT || PORT, () => {
+app.listen(process.env.PORT || 8800, () => {
   console.log(`Connected to ${PORT}`);
 });
 

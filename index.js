@@ -91,7 +91,7 @@ app.put("/records/:id", (req, res) => {
 });
 
 app.put("/updateD/:email", (req, res) => {
-  const recordId = req.params.id;
+  const emailD = req.params.email;
   const q =
     "update doctor natural join users set `name` =?, `surname`=?, `salary` = ? , `phone`= ?, `cname`= ?,`degree` = ? where email= ?";
   const values = [
@@ -103,7 +103,7 @@ app.put("/updateD/:email", (req, res) => {
     req.body.degree,
   ];
   console.log(values);
-  db.query(q, [...values, recordId], (err, data) => {
+  db.query(q, [...values, emailD], (err, data) => {
     if (err) return res.json(err);
     return res.json(data);
   });

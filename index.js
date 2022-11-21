@@ -1,13 +1,14 @@
 import express from "express";
 import mysql from "mysql";
 import cors from "cors";
-const app = express();
-app.use(express.json());
 app.use(
   cors({
     origin: "https://sparkling-caramel-33e27b.netlify.app",
   })
 );
+const app = express();
+
+app.use(express.json());
 
 const db = mysql.createConnection({
   host: "eu-cdbr-west-03.cleardb.net",

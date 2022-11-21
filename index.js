@@ -90,7 +90,7 @@ app.put("/records/:id", (req, res) => {
   });
 });
 
-app.put("/doctorupd/:id", (req, res) => {
+app.put("/updateD/:id", (req, res) => {
   const recordId = req.params.id;
   const q =
     "update users set `email` = ?, `name` =?, `surname`=?, `salary` = ? , `phone`= ?, `cname`= ? where id= ?";

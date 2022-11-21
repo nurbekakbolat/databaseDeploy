@@ -90,17 +90,17 @@ app.put("/records/:id", (req, res) => {
   });
 });
 
-app.put("/updateD/:id", (req, res) => {
+app.put("/updateD/:email", (req, res) => {
   const recordId = req.params.id;
   const q =
-    "update users set `email` = ?, `name` =?, `surname`=?, `salary` = ? , `phone`= ?, `cname`= ? where id= ?";
+    "update doctor natural join users set `name` =?, `surname`=?, `salary` = ? , `phone`= ?, `cname`= ?,`degree` = ? where email= ?";
   const values = [
-    req.body.email,
     req.body.name,
     req.body.surname,
     req.body.salary,
     req.body.phone,
     req.body.cname,
+    req.body.degree,
   ];
   console.log(values);
   db.query(q, [...values, recordId], (err, data) => {
@@ -109,9 +109,9 @@ app.put("/updateD/:id", (req, res) => {
   });
 });
 
-app.delete("/doctors/:id", (req, res) => {
-  const docId = req.params.id;
-  const q = "delete from doctor where id= ?";
+app.delete("/doctors/:email", (req, res) => {
+  const docId = req.params.email;
+  const q = "delete from doctor where email= ?";
   db.query(q, [docId], (err, data) => {
     console.log(err);
     if (err) return res.json(err);

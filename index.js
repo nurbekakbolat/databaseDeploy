@@ -2,8 +2,7 @@ import express from "express";
 import mysql from "mysql";
 import cors from "cors";
 const app = express();
-app.use(cors());
-app.use(express.json());
+app.use("/", cors(), express.json());
 
 const db = mysql.createConnection({
   host: "eu-cdbr-west-03.cleardb.net",

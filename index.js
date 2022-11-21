@@ -42,11 +42,12 @@ app.get("/doctors", (req, res) => {
   });
 });
 
-app.get("/delete/:rid", (req, res) => {
-  console.log(rid);
-  const q = "select * from record where id = 50";
+app.get("/delete/:recordId", (req, res) => {
+  const id = req.params.recordId;
+  console.log(id);
+  const q = "select * from record where id = ?";
 
-  db.query(q, (err, data) => {
+  db.query(q, [id], (err, data) => {
     if (err) {
       return res.json(err);
     }

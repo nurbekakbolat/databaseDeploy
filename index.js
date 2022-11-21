@@ -42,6 +42,16 @@ app.get("/doctors", (req, res) => {
   });
 });
 
+app.get("/records/:rid", (req, res) => {
+  const q = "select * from records where id = rid";
+  db.query(q, (err, data) => {
+    if (err) {
+      return res.json(err);
+    }
+    return res.json(data);
+  });
+});
+
 app.post("/diseases", (req, res) => {
   const q =
     "insert into disease (`disease_code`, `pathogen`, `descr`, `id`) values(?)";
@@ -102,6 +112,7 @@ app.put("/updateD/:email", (req, res) => {
     req.body.cname,
     req.body.degree,
   ];
+
   console.log(values);
   db.query(q, [...values, emailD], (err, data) => {
     if (err) return res.json(err);

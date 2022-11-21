@@ -64,7 +64,6 @@ app.delete("/records/:id", (req, res) => {
 });
 app.put("/records/:id", (req, res) => {
   const recordId = req.params.id;
-
   const q =
     "update record set `email` = ?, `cname` =?, `disease_code`=?, `total_deaths` = ? , `total_pat`= ? where id= ?";
   const values = [

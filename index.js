@@ -76,7 +76,7 @@ app.listen(port, () => {
 });
 
 app.delete("/records/:id", (req, res) => {
-  console.log(req.params.id);
+  console.log("req.params.id");
   const recordId = req.params.id;
   const q = "delete from record where id= ?";
   db.query(q, [recordId], (err, data) => {

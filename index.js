@@ -51,8 +51,8 @@ app.post("/diseases", (req, res) => {
   });
 });
 
-app.listen(8800, () => {
-  console.log("Connected to back11");
+app.listen(process.env.PORT || PORT, () => {
+  console.log(`Connected to ${PORT}`);
 });
 
 app.delete("/records/:id", (req, res) => {

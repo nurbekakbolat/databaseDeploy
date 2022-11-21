@@ -58,6 +58,7 @@ app.delete("/records/:id", (req, res) => {
   const recordId = req.params.id;
   const q = "delete from record where id= ?";
   db.query(q, [recordId], (err, data) => {
+    console.log(err);
     if (err) return res.json(err);
     return res.json(data);
   });

@@ -13,11 +13,7 @@ const db = mysql.createConnection({
 });
 app.set("port", process.env.PORT || 8800);
 
-// app.get("/", (req, res) => {
-//   res.json("backend is here");
-// });
-
-app.get("/diseases", (req, res) => {
+app.get("/", (req, res) => {
   const q = "select * from disease";
   db.query(q, (err, data) => {
     if (err) {

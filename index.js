@@ -5,27 +5,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// app.use((req, res, next) => {
-//     res.header("Access-Control-Allow-Origin", "*")
-//     res.header(
-//       "Access-Control-Allow-Headers",
-//       "Origin, X-Requested, Content-Type, Accept Authorization"
-//     )
-//     if (req.method === "OPTIONS") {
-//       res.header(
-//         "Access-Control-Allow-Methods",
-//         "POST, PUT, PATCH, GET, DELETE"
-//       )
-//       return res.status(200).json({})
-//     }
-//     next()
-//   })
-
 const db = mysql.createConnection({
   host: "eu-cdbr-west-03.cleardb.net",
-  user: "bfb0dce41cbf73",
-  password: "e694b1be",
-  database: "heroku_3672b2fc917a5a6",
+  user: "b3bb4e515071d0",
+  password: "d87c07aa",
+  database: "heroku_6fa3f2eaac603de",
 });
 app.set("port", process.env.PORT || 8800);
 

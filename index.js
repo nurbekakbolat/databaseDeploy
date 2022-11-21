@@ -44,7 +44,7 @@ app.get("/doctors", (req, res) => {
 
 app.get("/delete/:rid", (req, res) => {
   console.log(rid);
-  const q = "select * from record where id = rid";
+  const q = "select * from record where id = 50";
 
   db.query(q, (err, data) => {
     if (err) {
